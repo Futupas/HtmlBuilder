@@ -1,0 +1,57 @@
+*{
+    font-family: Arial;
+    font-size: 25px;
+}
+body{
+    overflow: hidden;
+}
+body > div{
+    position: fixed;
+    overflow: auto;
+    box-shadow: inset 0px 0px 0px 2px #000;
+}
+div#preview{
+    top: 0px;
+    left: 0px;
+    width: 50vw;
+    height: calc(100vh - 150px);
+}
+div#projectpreview{
+    bottom: 50px;
+    left: 0px;
+    width: 50vw;
+    height: 100px;
+}
+div#json{
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 50px;
+}
+div#element{
+    top: 0px;
+    left: 50vw;
+    width: 25vw;
+    height: calc(100vh - 50px);
+}
+div#element > div.name{
+
+}
+div#element > div.properties{
+    
+}
+div#element > div.styles{
+    
+}
+div#solution{
+    top: 0px;
+    left: 75vw;
+    width: 25vw;
+    height: calc(50vh - 25px);
+}
+div#create{
+    top: calc(50vh - 25px);
+    left: 75vw;
+    width: 25vw;
+    height: calc(50vh - 25px);
+}
