@@ -21,6 +21,10 @@ div#preview{
     left: 0px;
     width: 50vw;
     height: calc(100vh - 150px);
+    transform-style: preserve-3d;
+}
+div#preview *{
+    transform-style: preserve-3d;
 }
 div#projectpreview{
     bottom: 50px;
@@ -40,15 +44,29 @@ div#element{
     width: 25vw;
     height: calc(100vh - 50px);
 }
-div#element > div.name{
+/* div#element{
 
+} */
+div#element > table{
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
 }
-div#element > div.properties{
-    
+div#element > table input{
+    background-color: rgba(0, 0, 255, 0.2);
+    width: 70px;
+    border: none;
 }
-div#element > div.styles{
-    
+div#element > table tr > td{
+    padding: 3px;
 }
+div#element > table tr > td:first-child{
+    text-align: right;
+}
+div#element > table tr > td:last-child{
+    text-align: left;
+}
+
 div#solution{
     top: 0px;
     left: 75vw;

@@ -85,8 +85,6 @@ function Draw(element, parent) {
     }
 
     var children = Elements.filter(function(e){ return e.parent == element.name });
-
-    var children = Elements.filter(function(e){ return e.parent == element.name });
     for(var i = 0; i < children.length; i++){
         Draw(children[i], readyelement);
     }
