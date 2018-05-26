@@ -35,7 +35,7 @@ var elementtypes = [
             divstyles.margin = '0px';
             divstyles.transform = 'translateX(' + o.properties['x'] +
                     'px) translateY(' + o.properties['y'] +
-                    'px) translateZ(' + o.properties['Z'] +
+                    'px) translateZ(' + o.properties['z'] +
                     'px) rotateX(' + o.properties['rotateX'] +
                     'deg) rotateY(' + o.properties['rotateY'] +
                     'deg) rotateZ(' + o.properties['rotateZ'] + 'deg)';
