@@ -23,7 +23,6 @@ var elementtypes = [
             'width',
             'height',
             'background',
-            // 'opacity',
             'border'
         ],
 
@@ -42,7 +41,6 @@ var elementtypes = [
             divstyles.width = o.properties['width'] + 'px';
             divstyles.height = o.properties['height'] + 'px';
             divstyles.background = o.properties['background'];
-            // divstyles.opacity = o.properties['opacity'];
             divstyles.border = o.properties['border'];
             div.setAttribute('data-elname', o.name);
             return div;
@@ -72,7 +70,6 @@ var elementtypes = [
                 input.oninput = function (e) {
                     o.properties[this.propname] = this.value * 1;
                     var propelement = this.elem;
-                    // console.log(drawfunc);
                     Elements.filter(function(el){return el.name == propelement.name})[0].properties[this.propname] = 
                             this.value;
                     
@@ -89,7 +86,6 @@ var elementtypes = [
                     divstyles.width = o.properties['width'] + 'px';
                     divstyles.height = o.properties['height'] + 'px';
                     divstyles.background = o.properties['background'];
-                    divstyles.opacity = o.properties['opacity'];
                     divstyles.border = o.properties['border'];
                 }
                 td2.appendChild(input);
@@ -107,7 +103,6 @@ var elementtypes = [
             createTr('Height', 'height', 0, 1000, 10, false, 0);
             createTr('Background', 'background', 0, 0, 0, true, 50);
             createTr('Border', 'border', 0, 0, 0, true, 32);
-            // createTr('Opacity', 'opacity', 0, 1, 0.1);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);

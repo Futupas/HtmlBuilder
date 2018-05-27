@@ -20,7 +20,6 @@ var Elements = [
             width: 300,
             height: 300,
             background: '#f00',
-            opacity: 1,
             border: 'none'
         }
     }, {
@@ -37,7 +36,6 @@ var Elements = [
             width: 100,
             height: 100,
             background: '#0f0',
-            opacity: 1,
             border: 'none'
         }
     }, {
@@ -54,7 +52,6 @@ var Elements = [
             width: 100,
             height: 100,
             background: '#00f',
-            opacity: 1,
             border: 'none'
         }
     }, {
@@ -71,7 +68,6 @@ var Elements = [
             width: 40,
             height: 40,
             background: '#ff0',
-            opacity: 1,
             border: 'none'
         }
     }
