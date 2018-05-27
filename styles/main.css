@@ -99,6 +99,9 @@ div.treeview > div.treeview.button{
     background-position: 50% 50%;
     background-size: 14px 14px;
 }
+div.treeview.button.endbranch:hover{
+    background-color: transparent;
+}
 div.treeview.button:hover{
     background-color: #ccc;
 }

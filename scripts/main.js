@@ -112,7 +112,9 @@ function DrawS(element, parent) {
             this.parentElement.classList.toggle('opened');
         };
     } else {
+        solbtn.classList.add('endbranch');
         solbtn.style.backgroundImage = 'url("./img/treeview/treeview_square.png")';
+        solbtn.style.backgroundSize = '10px 10px';
     };
     soltitle.onclick = function (e) {
         var els3 = document.querySelectorAll('.treeview.title.active');
@@ -120,10 +122,14 @@ function DrawS(element, parent) {
             els3[i].classList.remove('active');
         }
         this.classList.toggle('active');
+
+        var elem = this.dataElement;
+        var eltype = elementtypes.filter(function(e) {return e.type == elem.type;})[0];
+        eltype.edit(elem);
+
         return false;
     };
     soltitle.oncontextmenu = function (e) {
-        console.log(this.dataElement);
         var els3 = document.querySelectorAll('.treeview.focus');
         for (var i = 0; i < els3.length; i++) {
             els3[i].classList.remove('focus');
