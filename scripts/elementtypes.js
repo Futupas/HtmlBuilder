@@ -23,7 +23,7 @@ var elementtypes = [
             'width',
             'height',
             'background',
-            'opacity',
+            // 'opacity',
             'border'
         ],
 
@@ -42,7 +42,7 @@ var elementtypes = [
             divstyles.width = o.properties['width'] + 'px';
             divstyles.height = o.properties['height'] + 'px';
             divstyles.background = o.properties['background'];
-            divstyles.opacity = o.properties['opacity'];
+            // divstyles.opacity = o.properties['opacity'];
             divstyles.border = o.properties['border'];
             div.setAttribute('data-elname', o.name);
             return div;
@@ -50,16 +50,22 @@ var elementtypes = [
         edit: function(o) {
             var table = document.createElement('table');
             var drawfunc = this.draw
-            var createTr = function (caption, propname, from, to, step) {
+            var createTr = function (caption, propname, from, to, step, isText, length) {
                 var tr = document.createElement('tr');
                 var td1 = document.createElement('td');
                 var td2 = document.createElement('td');
                 td1.innerText = caption;
                 var input = document.createElement('input');
-                input.setAttribute('type', 'number');
-                input.setAttribute('min', from);
-                input.setAttribute('max', to);
-                input.setAttribute('step', step);
+                if (isText === true) {
+                    input.setAttribute('type', 'text');
+                    input.setAttribute('maxlength', length);
+                } else {
+                    input.setAttribute('type', 'number');
+                    input.setAttribute('min', from);
+                    input.setAttribute('max', to);
+                    input.setAttribute('step', step);
+                }
+                
                 input.value = o.properties[propname];
                 input.propname = propname;
                 input.elem = o;
@@ -68,7 +74,7 @@ var elementtypes = [
                     var propelement = this.elem;
                     // console.log(drawfunc);
                     Elements.filter(function(el){return el.name == propelement.name})[0].properties[this.propname] = 
-                            this.value * 1;
+                            this.value;
                     
                     var div = document.querySelector('#preview div[data-elname="'+propelement.name+'"]');
                     var divstyles = div.style;
@@ -91,15 +97,17 @@ var elementtypes = [
                 tr.appendChild(td2);
                 table.appendChild(tr);
             }
-            createTr('Traanslate X', 'x', -1000, 1000, 10);
-            createTr('Traanslate Y', 'y', -1000, 1000, 10);
-            createTr('Traanslate Z', 'z', -1000, 1000, 10);
-            createTr('Rotate X', 'rotateX', -360, 360, 5);
-            createTr('Rotate Y', 'rotateY', -360, 360, 5);
-            createTr('Rotate Z', 'rotateZ', -360, 360, 5);
-            createTr('Width', 'width', 0, 1000, 10);
-            createTr('Height', 'height', 0, 1000, 10);
-            createTr('Opacity', 'opacity', 0, 1, 0.1);
+            createTr('Translate X', 'x', -1000, 1000, 10, false, 0);
+            createTr('Translate Y', 'y', -1000, 1000, 10, false, 0);
+            createTr('Translate Z', 'z', -1000, 1000, 10, false, 0);
+            createTr('Rotate X', 'rotateX', -360, 360, 5, false, 0);
+            createTr('Rotate Y', 'rotateY', -360, 360, 5, false, 0);
+            createTr('Rotate Z', 'rotateZ', -360, 360, 5, false, 0);
+            createTr('Width', 'width', 0, 1000, 10, false, 0);
+            createTr('Height', 'height', 0, 1000, 10, false, 0);
+            createTr('Background', 'background', 0, 0, 0, true, 50);
+            createTr('Border', 'border', 0, 0, 0, true, 32);
+            // createTr('Opacity', 'opacity', 0, 1, 0.1);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);

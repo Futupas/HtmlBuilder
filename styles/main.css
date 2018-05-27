@@ -54,11 +54,12 @@ div#element > table{
 }
 div#element > table input{
     background-color: rgba(0, 0, 255, 0.2);
-    width: 70px;
+    width: 100%;
     border: none;
 }
 div#element > table tr > td{
     padding: 3px;
+    white-space: nowrap;
 }
 div#element > table tr > td:first-child{
     text-align: right;
