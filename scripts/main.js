@@ -106,11 +106,11 @@ function Draw(element, parent) {
     }
 }
 function DrawS(element, parent) {
-
     var children = Elements.filter(function(e){ return e.parent == element.name });
 
     var sol = document.createElement('div');
     sol.classList.add('treeview');
+    sol.setAttribute('data-s-elname', element.name);
     var solbtn = document.createElement('div');
     solbtn.classList.add('treeview', 'button');
     var soltitle = document.createElement('div');
@@ -129,15 +129,15 @@ function DrawS(element, parent) {
         };
     } else {
         solbtn.classList.add('endbranch');
-        solbtn.style.backgroundImage = 'url("./img/treeview/treeview_square.png")';
-        solbtn.style.backgroundSize = '10px 10px';
+        // solbtn.style.backgroundImage = 'url("./img/treeview/treeview_square.png")';
+        // solbtn.style.backgroundSize = '10px 10px';
     };
     soltitle.onclick = function (e) {
-        var els3 = document.querySelectorAll('.treeview.title.active');
+        var els3 = document.querySelectorAll('.treeview.active');
         for (var i = 0; i < els3.length; i++) {
             els3[i].classList.remove('active');
         }
-        this.classList.toggle('active');
+        this.parentElement.classList.toggle('active');
 
         var elem = this.dataElement;
         var eltype = elementtypes.filter(function(e) {return e.type == elem.type;})[0];
@@ -167,3 +167,24 @@ Draw(Elements[0], document.getElementById('preview'));
 
 document.getElementById('solution').innerHTML = '';
 DrawS(Elements[0], document.getElementById('solution'));
+
+
+function CreateElement(e) {
+    var activeelementname = document.querySelector('.treeview.active').getAttribute('data-s-elname');
+    var eltypename = document.querySelector('#create select > option:checked').getAttribute('value');
+    var eltype = elementtypes.filter(function(el) { return el.type == eltypename; })[0];
+    var name = document.querySelector('#create input[name="elemname"]').value;
+    document.querySelector('#create input[name="elemname"]').value = '';
+    var element = eltype.create(name, activeelementname);
+    Elements.push(element);
+    Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"]'));
+    DrawS(element, document.querySelector('#solution div.treeview.active > div.treeview.content'));
+    if (document.querySelector('#solution div.treeview.active > div.treeview.button').classList.contains('endbranch')) {
+        document.querySelector('#solution div.treeview.active > div.treeview.button').classList.remove('endbranch');
+        document.querySelector('#solution div.treeview.active > div.treeview.button').onclick = function (e) {
+            this.parentElement.classList.toggle('opened');
+        };
+    }
+}
+
+document.querySelector('#create > button.createelement').onclick = CreateElement;

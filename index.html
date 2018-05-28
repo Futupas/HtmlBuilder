@@ -49,7 +49,21 @@
             </div>
         </div>
     </div>
-    <div style="background-color: rgb(000, 026, 255);" id="create"></div>
+    <div id="create">
+        <table>
+            <tr>
+                <td>
+                    <select name="elementtype" id="" class="elementtype">
+                        <option value="div" name="elementtype" selected>div</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="elemname" maxlength="20" placeholder="elements' name" />
+                </td>
+            </tr>
+        </table>
+        <button class="createelement">Create element</button>
+    </div>
 
     <script src="./scripts/elementtypes.js"></script>
     <script src="./scripts/main.js"></script>

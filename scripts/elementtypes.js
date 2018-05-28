@@ -64,6 +64,9 @@ var elementtypes = [
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
+        },
+        create: function(o) {
+            return false;
         }
     }, 
     {
@@ -190,6 +193,31 @@ var elementtypes = [
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
+        },
+        create: function(name, parent) {
+            var element = {
+                type: 'div',
+                name: name,
+                parent: parent,
+                properties: {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    rotateX: 0,
+                    rotateY: 0,
+                    rotateZ: 0,
+                    scaleX: 1,
+                    scaleY: 1,
+                    scaleZ: 1,
+                    skewX: 0,
+                    skewY: 0,
+                    width: 100,
+                    height: 100,
+                    background: '#fff',
+                    border: '1px solid black'
+                }
+            };
+            return element;
         }
     }
 ];

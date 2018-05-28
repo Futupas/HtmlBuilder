@@ -80,7 +80,27 @@ div#create{
     width: 25vw;
     height: calc(50vh - 25px);
 }
-
+div#create > table{
+    width: 100%;
+} 
+div#create > table td input,
+div#create > table td select{
+    width: 100%;
+    /* font-size: Arial; */
+}
+div#create > button.createelement{
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #0f0;
+    color: #000;
+    height: 50px;
+    width: calc(100% - 20px);
+    line-height: 48px;
+}
+div#create > button.createelement:hover{
+    background-color: rgb(152, 255, 152);
+    /* color: #fff; */
+}
 
 div.treeview{
     padding: 0px;
@@ -100,9 +120,12 @@ div.treeview > div.treeview.button{
     background-position: 50% 50%;
     background-size: 14px 14px;
 }
-div.treeview.button.endbranch:hover{
-    background-color: transparent;
+div.treeview.button.endbranch{
+    background-color: transparent !important;
+    background-image: url('../img/treeview/treeview_square.png') !important;
+    background-size: 10px 10px !important;
 }
+
 div.treeview.button:hover{
     background-color: #ccc;
 }
@@ -116,7 +139,7 @@ div.treeview.title{
     padding-left: 5px;
     /* box-sizing: border-box; */
 }
-div.treeview.title.active{
+div.treeview.active > div.treeview.title{
     background-color: #00f;
     color: #fff;
 }
