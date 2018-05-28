@@ -193,6 +193,12 @@ var elementtypes = [
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
+            var deletebtn = document.createElement('button');
+            deletebtn.innerText = 'Delete';
+            deletebtn.classList.add('deleteelement');
+            deletebtn.dataElement = o.name;
+            deletebtn.onclick = this.delete;
+            document.getElementById('element').appendChild(deletebtn);
         },
         create: function(name, parent) {
             var element = {
@@ -218,6 +224,23 @@ var elementtypes = [
                 }
             };
             return element;
+        },
+        delete: function(e) {
+            var deletenames = [];
+            var adddeletename = function(elemname) {
+                deletenames.push(elemname);
+                var children = Elements.filter(function (el) {return el.parent == elemname;});
+                for (var i = 0; i < children.length; i++) {
+                    adddeletename(children[i].name);
+                }
+            }
+            adddeletename(this.dataElement);
+            for (var i = 0; i < deletenames.length; i++) {
+                var index = Elements.indexOf(Elements.filter(function(el) {return el.name == deletenames[i];})[0]);
+                console.log(index);
+                Elements.splice(index, 1);
+            }
+            console.log(Elements);
         }
     }
 ];

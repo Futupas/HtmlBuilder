@@ -129,8 +129,6 @@ function DrawS(element, parent) {
         };
     } else {
         solbtn.classList.add('endbranch');
-        // solbtn.style.backgroundImage = 'url("./img/treeview/treeview_square.png")';
-        // solbtn.style.backgroundSize = '10px 10px';
     };
     soltitle.onclick = function (e) {
         var els3 = document.querySelectorAll('.treeview.active');
@@ -175,12 +173,19 @@ function CreateElement(e) {
     var eltype = elementtypes.filter(function(el) { return el.type == eltypename; })[0];
     var name = document.querySelector('#create input[name="elemname"]').value;
     document.querySelector('#create input[name="elemname"]').value = '';
+
+    var nameisvalid = (Elements.filter(function(el) {return el.name == name}).length == 0);
+    if (!nameisvalid) {
+        alert('The name is already taken');
+        return;
+    }
     var element = eltype.create(name, activeelementname);
     Elements.push(element);
     Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"]'));
     DrawS(element, document.querySelector('#solution div.treeview.active > div.treeview.content'));
     if (document.querySelector('#solution div.treeview.active > div.treeview.button').classList.contains('endbranch')) {
         document.querySelector('#solution div.treeview.active > div.treeview.button').classList.remove('endbranch');
+        document.querySelector('#solution div.treeview.active').classList.add('opened');
         document.querySelector('#solution div.treeview.active > div.treeview.button').onclick = function (e) {
             this.parentElement.classList.toggle('opened');
         };

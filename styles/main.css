@@ -67,6 +67,19 @@ div#element > table tr > td:first-child{
 div#element > table tr > td:last-child{
     text-align: left;
 }
+div#element button.deleteelement{
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #f00;
+    color: #fff;
+    height: 50px;
+    width: calc(100% - 20px);
+    line-height: 48px;
+}
+div#element button.deleteelement:hover{
+    background-color: rgb(255, 152, 152);
+    color: #000;
+}
 
 div#solution{
     top: 0px;
