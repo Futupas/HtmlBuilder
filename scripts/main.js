@@ -181,7 +181,7 @@ function CreateElement(e) {
     }
     var element = eltype.create(name, activeelementname);
     Elements.push(element);
-    Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"]'));
+    Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"], #preview[data-elname="'+activeelementname+'"]'));
     DrawS(element, document.querySelector('#solution div.treeview.active > div.treeview.content'));
     if (document.querySelector('#solution div.treeview.active > div.treeview.button').classList.contains('endbranch')) {
         document.querySelector('#solution div.treeview.active > div.treeview.button').classList.remove('endbranch');

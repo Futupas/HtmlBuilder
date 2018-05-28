@@ -60,7 +60,7 @@ var elementtypes = [
                 table.appendChild(tr);
             }
             createTr('Perspective', 'perspective', 0, 10000, 100, false, 0);
-            createTr('Background', 'background', 0, 0, 0, true, 50);
+            createTr('Background', 'background', 0, 0, 0, true, 1000);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
@@ -188,8 +188,8 @@ var elementtypes = [
             createTr('Skew Y', 'skewY', -360, 360, 5, false, 0);
             createTr('Width', 'width', 0, 1000, 10, false, 0);
             createTr('Height', 'height', 0, 1000, 10, false, 0);
-            createTr('Background', 'background', 0, 0, 0, true, 50);
-            createTr('Border', 'border', 0, 0, 0, true, 32);
+            createTr('Background', 'background', 0, 0, 0, true, 1000);
+            createTr('Border', 'border', 0, 0, 0, true, 100);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
@@ -226,6 +226,9 @@ var elementtypes = [
             return element;
         },
         delete: function(e) {
+            var confirm_ = confirm('Are you sure want to delete element "'+this.dataElement+'"?');
+            if (!confirm_) return;
+
             var deletenames = [];
             var adddeletename = function(elemname) {
                 deletenames.push(elemname);
@@ -234,13 +237,24 @@ var elementtypes = [
                     adddeletename(children[i].name);
                 }
             }
+
             adddeletename(this.dataElement);
+            document.querySelector('#preview div[data-elname="'+this.dataElement+'"]').remove();
+            var elname = this.dataElement;
+            var parent = Elements.filter(function (el) {return el.name == elname})[0].parent;
+            document.querySelector('#solution div.treeview.active').remove();
+            document.querySelector('#element').innerHTML = '';
+
             for (var i = 0; i < deletenames.length; i++) {
                 var index = Elements.indexOf(Elements.filter(function(el) {return el.name == deletenames[i];})[0]);
-                console.log(index);
                 Elements.splice(index, 1);
             }
-            console.log(Elements);
+
+            var siblings = Elements.filter(function (el) {return el.parent == parent}).length;
+            if (siblings == 0) {
+                document.querySelector('#solution div.treeview[data-s-elname="'+parent+'"] > div.treeview.button').classList.add('endbranch');
+                document.querySelector('#solution div.treeview[data-s-elname="'+parent+'"] > div.treeview.button').onclick = null;
+            }
         }
     }
 ];
