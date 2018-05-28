@@ -170,15 +170,17 @@ div.treeview.opened > div.treeview.button{
 }
 
 
-#json > button.export{
-
+#json > button.ieb{
+    padding: 0px 10px;
+    height: 40px;
+    line-height: 20px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid black;
+    float: right;
+    margin-left: 5px;
+    border-radius: 10px;
 }
-#json > button.export:hover{
-    
-}
-#json > button.import{
-    
-}
-#json > button.import:hover{
-    
+#json > button.ieb:hover{
+    background-color: rgb(233, 138, 209);
 }

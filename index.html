@@ -9,12 +9,15 @@
 </head>
 <body>
     <div id="preview" data-elname="sketch"></div>
-    <div style="background-color: rgb(78, 78, 78);" id="projectpreview"></div>
+    <div style="background-color: #000;" id="projectpreview">
+        
+    </div>
     <div id="json">
         <div style="float: left; line-height: 40px; font-size: 12px;">Made with &#10084; by Futupas</div>
-        <button class="export" onclick="ExportJson();">Export to JSON</button>
-        <button class="import" onclick="ImportJsonBtn();">Import from JSON</button>
+        <button class="import ieb" onclick="ImportJsonBtn();">Import from JSON</button>
+        <button class="export ieb" onclick="ExportJson();">Export to JSON</button>
         <input type="file" accept=".json" id="importinput" onchange="ImportJson(this.files);" style="display: none;" />
+        <button class="exporthtml ieb" onclick="">Export to HTML</button>
     </div>
     <div id="element">
         
