@@ -193,3 +193,19 @@ function CreateElement(e) {
 }
 
 document.querySelector('#create > button.createelement').onclick = CreateElement;
+
+
+function ExportJson() {
+    var json = JSON.stringify(Elements);
+    var va = document.createElement('a');
+    va.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(json));
+    va.setAttribute('download', 'sketch.json');
+    va.style.display = 'none';
+    document.getElementById('json').appendChild(va);
+    va.click();
+    va.remove();
+
+}
+function ImportJson() {
+    //
+}

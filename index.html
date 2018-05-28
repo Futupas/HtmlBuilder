@@ -10,7 +10,12 @@
 <body>
     <div id="preview" data-elname="sketch"></div>
     <div style="background-color: rgb(78, 78, 78);" id="projectpreview"></div>
-    <div style="background-color: rgb(78, 78, 78);" id="json"></div>
+    <div id="json">
+        <div style="float: left; line-height: 40px; font-size: 12px;">Made with &#10084; by Futupas</div>
+        <button class="export" onclick="ExportJson();">Export to JSON</button>
+        <button class="import" onclick="ImportJson();">Import from JSON</button>
+        <input type="file" accept=".json" id="importfile" style="display: none;" />
+    </div>
     <div id="element">
         
     </div>

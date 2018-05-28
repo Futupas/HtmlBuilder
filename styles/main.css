@@ -168,3 +168,17 @@ div.treeview.opened > div.treeview.content{
 div.treeview.opened > div.treeview.button{
     background-image: url('../img/treeview/treeview_minus.png');
 }
+
+
+#json > button.export{
+
+}
+#json > button.export:hover{
+    
+}
+#json > button.import{
+    
+}
+#json > button.import:hover{
+    
+}
