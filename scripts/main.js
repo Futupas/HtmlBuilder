@@ -204,8 +204,23 @@ function ExportJson() {
     document.getElementById('json').appendChild(va);
     va.click();
     va.remove();
-
 }
-function ImportJson() {
-    //
+function ImportJsonBtn() {
+    document.getElementById('importinput').click();
+    return false;
+}
+function ImportJson(files) {
+    var file = files[0];
+    var reader = new FileReader();
+    reader.onload = (function(theFile) {
+        return function(e) {
+            var json = e.target.result;
+            Elements = JSON.parse(json);
+            document.getElementById('preview').innerHTML = '';
+            Draw(Elements[0], document.getElementById('preview'));
+            document.getElementById('solution').innerHTML = '';
+            DrawS(Elements[0], document.getElementById('solution'));
+        };  
+    })(file);
+    reader.readAsBinaryString(file);
 }
