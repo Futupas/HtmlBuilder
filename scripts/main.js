@@ -4,7 +4,14 @@ var Elements = [
         name: 'sketch',
         properties: {
             perspective: 1000,
-            background: '#fff'
+            background: '#fff',
+            scale: 1,
+            rotateX: 0,
+            rotateY: 0,
+            rotateZ: 0,
+            x: 0,
+            y: 0,
+            z: 0,
         }
     }
 ];
@@ -14,6 +21,8 @@ function Draw(element, parent) {
     var readyelement = retype.draw(element);
     if (element.type != 'sketch') {
         parent.appendChild(readyelement);
+    } else {
+
     }
 
     var children = Elements.filter(function(e){ return e.parent == element.name });
@@ -65,8 +74,8 @@ function DrawS(element, parent) {
             els3[i].classList.remove('focus');
         }
         this.parentElement.classList.toggle('focus');
-        document.getElementById('preview').innerHTML = '';
-        Draw(this.dataElement, document.getElementById('preview'));
+        document.querySelector('#preview div[data-elname="sketch"]').innerHTML = '';
+        Draw(this.dataElement, document.querySelector('#preview div[data-elname="sketch"]'));
         return false;
     };
     
@@ -132,8 +141,8 @@ function ImportJson(files) {
         return function(e) {
             var json = e.target.result;
             Elements = JSON.parse(json);
-            document.getElementById('preview').innerHTML = '';
-            Draw(Elements[0], document.getElementById('preview'));
+            document.querySelector('#preview div[data-elname="sketch"]').innerHTML = '';
+            Draw(Elements[0], document.querySelector('#preview div[data-elname="sketch"]'));
             document.getElementById('solution').innerHTML = '';
             DrawS(Elements[0], document.getElementById('solution'));
         };  

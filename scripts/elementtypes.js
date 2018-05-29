@@ -8,18 +8,25 @@ var elementtypes = [
             'ratateX',
             'ratateY',
             'ratateZ',
-            'translateX',
-            'translateY',
-            'translateZ'
+            'x',
+            'y',
+            'z'
         ],
         styles: [],
         
         draw: function (o) {
             var prw = document.getElementById('preview');
             prw.style.perspective = o.properties['perspective'] + 'px';
-            prw.style.backgroundColor = o.properties['background'];
-            // var sketch = document.querySelector()
-            return prw;
+            prw.style.background = o.properties['background'];
+            var sketch = document.querySelector('#preview div[data-elname="sketch"]');
+            sketch.style.transform = 'translateX(' + o.properties['x'] +
+                'px) translateY(' + o.properties['y'] +
+                'px) translateZ(' + o.properties['z'] +
+                'px) rotateX(' + o.properties['rotateX'] +
+                'deg) rotateY(' + o.properties['rotateY'] +
+                'deg) rotateZ(' + o.properties['rotateZ'] + 
+                'deg) Scale(' + o.properties['scale'] + ')';
+            return sketch;
         },
         edit: function(o) {
             var table = document.createElement('table');
@@ -54,16 +61,24 @@ var elementtypes = [
                 input.value = o.properties[propname];
                 input.propname = propname;
                 input.elem = o;
+                // input.previewprops = previewprops;
                 input.oninput = function (e) {
                     o.properties[this.propname] = this.value * 1;
                     var propelement = this.elem;
                     Elements.filter(function(el){return el.name == propelement.name})[0].properties[this.propname] = 
                             this.value;
                     
-                    var div = document.getElementById('preview');
-                    var divstyles = div.style;
-                    divstyles.perspective = o.properties['perspective'] + 'px';
-                    divstyles.background = o.properties['background'];
+                    var previewdiv = document.getElementById('preview');
+                    previewdiv.style.perspective = o.properties['perspective'] + 'px';
+                    previewdiv.style.background = o.properties['background'];
+                    var sketchdiv = document.querySelector('#preview div[data-elname="sketch"]');
+                    sketchdiv.style.transform = 'translateX(' + o.properties['x'] +
+                        'px) translateY(' + o.properties['y'] +
+                        'px) translateZ(' + o.properties['z'] +
+                        'px) rotateX(' + o.properties['rotateX'] +
+                        'deg) rotateY(' + o.properties['rotateY'] +
+                        'deg) rotateZ(' + o.properties['rotateZ'] + 
+                        'deg) Scale(' + o.properties['scale'] + ')';
                 }
                 td2.appendChild(input);
                 tr.appendChild(td1);
@@ -72,7 +87,13 @@ var elementtypes = [
             }
             createTr('Perspective', 'perspective', 0, 10000, 100, false, 0);
             createTr('Background', 'background', 0, 0, 0, true, 1000);
-            createTr('Scale', 'scale', 0, 0, 0, true, 1000);
+            createTr('Scale', 'scale', -10, 10, 0.5, false, 0);
+            createTr('Rotate X', 'rotateX', -360, 360, 5, false, 0);
+            createTr('Rotate Y', 'rotateY', -360, 360, 5, false, 0);
+            createTr('Rotate Z', 'rotateZ', -360, 360, 5, false, 0);
+            createTr('Translate X', 'x', -1000, 1000, 10, false, 0);
+            createTr('Translate Y', 'y', -1000, 1000, 10, false, 0);
+            createTr('Translate Z', 'z', -1000, 1000, 10, false, 0);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
