@@ -76,8 +76,8 @@ function DrawS(element, parent) {
     }
 }
 
-document.getElementById('preview').innerHTML = '';
-Draw(Elements[0], document.getElementById('preview'));
+document.querySelector('#preview div[data-elname="sketch"]').innerHTML = '';
+Draw(Elements[0], document.querySelector('#preview div[data-elname="sketch"]'));
 
 document.getElementById('solution').innerHTML = '';
 DrawS(Elements[0], document.getElementById('solution'));
@@ -97,7 +97,7 @@ function CreateElement(e) {
     }
     var element = eltype.create(name, activeelementname);
     Elements.push(element);
-    Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"], #preview[data-elname="'+activeelementname+'"]'));
+    Draw(element, document.querySelector('#preview div[data-elname="'+activeelementname+'"]'));
     DrawS(element, document.querySelector('#solution div.treeview.active > div.treeview.content'));
     if (document.querySelector('#solution div.treeview.active > div.treeview.button').classList.contains('endbranch')) {
         document.querySelector('#solution div.treeview.active > div.treeview.button').classList.remove('endbranch');

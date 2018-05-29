@@ -1,13 +1,24 @@
 var elementtypes = [
     {
         type: 'sketch',
-        properties: ['perspective', 'background'],
+        properties: [
+            'perspective', 
+            'background', 
+            'scale',
+            'ratateX',
+            'ratateY',
+            'ratateZ',
+            'translateX',
+            'translateY',
+            'translateZ'
+        ],
         styles: [],
         
         draw: function (o) {
             var prw = document.getElementById('preview');
             prw.style.perspective = o.properties['perspective'] + 'px';
             prw.style.backgroundColor = o.properties['background'];
+            // var sketch = document.querySelector()
             return prw;
         },
         edit: function(o) {
@@ -61,6 +72,7 @@ var elementtypes = [
             }
             createTr('Perspective', 'perspective', 0, 10000, 100, false, 0);
             createTr('Background', 'background', 0, 0, 0, true, 1000);
+            createTr('Scale', 'scale', 0, 0, 0, true, 1000);
 
             document.getElementById('element').innerHTML = '';
             document.getElementById('element').appendChild(table);
