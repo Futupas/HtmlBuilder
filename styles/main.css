@@ -22,9 +22,17 @@ div#preview{
     width: 50vw;
     height: calc(100vh - 150px);
     transform-style: preserve-3d;
+    overflow: hidden;
 }
 div#preview *{
     transform-style: preserve-3d;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+div#preview div[data-elname="sketch"] {
+    width: 100%;
+    height: 100%;
 }
 div#projectpreview{
     bottom: 50px;

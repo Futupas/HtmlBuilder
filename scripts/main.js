@@ -75,6 +75,12 @@ function DrawS(element, parent) {
         }
         this.parentElement.classList.toggle('focus');
         document.querySelector('#preview div[data-elname="sketch"]').innerHTML = '';
+        // this.dataElement.properties.rotateX = 0;
+        // this.dataElement.properties.rotateY = 0;
+        // this.dataElement.properties.rotateZ = 0;
+        // this.dataElement.properties.x = 0;
+        // this.dataElement.properties.y = 0;
+        // this.dataElement.properties.z = 0;
         Draw(this.dataElement, document.querySelector('#preview div[data-elname="sketch"]'));
         return false;
     };
@@ -148,4 +154,43 @@ function ImportJson(files) {
         };  
     })(file);
     reader.readAsBinaryString(file);
+}
+
+
+document.getElementById('preview').onmousemove = function (e) {
+    if (e.buttons == 1) {
+        Elements[0].properties.rotateX = Elements[0].properties.rotateX*1 - e.movementY;
+        Elements[0].properties.rotateY = Elements[0].properties.rotateY*1 + e.movementX;
+        elementtypes[0].edit(Elements[0]);
+        document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+            elementtypes[0].draw(Elements[0]).style.transform;
+    }
+}
+document.getElementById('projectpreview').onmousemove = function (e) {
+    if (e.buttons == 1) 
+    console.log(e);
+}
+
+window.onkeydown = function (e) {
+    if (mouseinpreview) {
+        console.log(e);
+    }
+    if (mouseinprojectpreview) {
+        console.log(e);
+    }
+}
+
+var mouseinpreview = false, mouseinprojectpreview = false;
+
+document.getElementById('preview').onmouseenter = function (e) {
+    mouseinpreview = true;
+}
+document.getElementById('preview').onmouseleave = function (e) {
+    mouseinpreview = false;
+}
+document.getElementById('projectpreview').onmouseenter = function (e) {
+    mouseinprojectpreview = true;
+}
+document.getElementById('projectpreview').onmouseleave = function (e) {
+    mouseinprojectpreview = false;
 }
