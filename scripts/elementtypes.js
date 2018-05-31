@@ -25,7 +25,9 @@ var elementtypes = [
                 'px) rotateX(' + o.properties['rotateX'] +
                 'deg) rotateY(' + o.properties['rotateY'] +
                 'deg) rotateZ(' + o.properties['rotateZ'] + 
-                'deg) Scale(' + o.properties['scale'] + ')';
+                'deg) ScaleX(' + o.properties['scale'] +
+                ') ScaleY(' + o.properties['scale'] +
+                ') ScaleZ(' + o.properties['scale'] + ')';
             return sketch;
         },
         edit: function(o) {
@@ -78,7 +80,9 @@ var elementtypes = [
                         'px) rotateX(' + o.properties['rotateX'] +
                         'deg) rotateY(' + o.properties['rotateY'] +
                         'deg) rotateZ(' + o.properties['rotateZ'] + 
-                        'deg) Scale(' + o.properties['scale'] + ')';
+                        'deg) ScaleX(' + o.properties['scale'] +
+                        ') ScaleY(' + o.properties['scale'] +
+                        ') ScaleZ(' + o.properties['scale'] + ')';
                 }
                 td2.appendChild(input);
                 tr.appendChild(td1);
@@ -125,9 +129,9 @@ var elementtypes = [
         draw: function (o) {
             var div = document.createElement('div');
             var divstyles = div.style;
-            divstyles.position = 'absolute';
-            divstyles.padding = '0px';
-            divstyles.margin = '0px';
+            // divstyles.position = 'absolute';
+            // divstyles.padding = '0px';
+            // divstyles.margin = '0px';
             divstyles.transform = 'translateX(' + o.properties['x'] +
                     'px) translateY(' + o.properties['y'] +
                     'px) translateZ(' + o.properties['z'] +

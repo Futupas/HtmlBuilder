@@ -29,6 +29,8 @@ div#preview *{
     position: absolute;
     top: 0px;
     left: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 div#preview div[data-elname="sketch"] {
     width: 100%;

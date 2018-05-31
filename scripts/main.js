@@ -75,13 +75,13 @@ function DrawS(element, parent) {
         }
         this.parentElement.classList.toggle('focus');
         document.querySelector('#preview div[data-elname="sketch"]').innerHTML = '';
-        // this.dataElement.properties.rotateX = 0;
-        // this.dataElement.properties.rotateY = 0;
-        // this.dataElement.properties.rotateZ = 0;
-        // this.dataElement.properties.x = 0;
-        // this.dataElement.properties.y = 0;
-        // this.dataElement.properties.z = 0;
         Draw(this.dataElement, document.querySelector('#preview div[data-elname="sketch"]'));
+        // document.querySelector('#preview div[data-elname="sketch"]').style.transform =
+        //     'translateX(0px) translateY(0px) translateZ(0px)'+
+        //     'rotateX(0deg) rotateY(0deg) rotateZ(0deg) '+
+        //     'scaleX(' + Elements[0].properties.scaleX + 
+        //     ') scaleY(' + Elements[0].properties.scaleY + 
+        //     ') scaleZ(' + Elements[0].properties.scaleZ + ')';
         return false;
     };
     
@@ -161,22 +161,54 @@ document.getElementById('preview').onmousemove = function (e) {
     if (e.buttons == 1) {
         Elements[0].properties.rotateX = Elements[0].properties.rotateX*1 - e.movementY;
         Elements[0].properties.rotateY = Elements[0].properties.rotateY*1 + e.movementX;
-        elementtypes[0].edit(Elements[0]);
         document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
             elementtypes[0].draw(Elements[0]).style.transform;
     }
 }
 document.getElementById('projectpreview').onmousemove = function (e) {
-    if (e.buttons == 1) 
-    console.log(e);
+    if (e.buttons == 1) {
+        // MOUSE IN PROJECT PREVIEW
+    }
 }
 
 window.onkeydown = function (e) {
     if (mouseinpreview) {
-        console.log(e);
+        if (e.code == 'KeyW') {
+            Elements[0].properties.z = Elements[0].properties.z*1 + 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyS') {
+            Elements[0].properties.z = Elements[0].properties.z*1 - 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyA') {
+            Elements[0].properties.x = Elements[0].properties.x*1 - 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyD') {
+            Elements[0].properties.x = Elements[0].properties.x*1 + 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyQ') {
+            Elements[0].properties.rotateZ = Elements[0].properties.rotateZ*1 - 5;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyE') {
+            Elements[0].properties.rotateZ = Elements[0].properties.rotateZ*1 + 5;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyR') {
+            Elements[0].properties.y = Elements[0].properties.y*1 - 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'KeyF') {
+            Elements[0].properties.y = Elements[0].properties.y*1 + 10;
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        }
     }
     if (mouseinprojectpreview) {
-        console.log(e);
+        // KEY IN PROJECT PREVIEW
     }
 }
 
