@@ -47,7 +47,6 @@ window.onkeydown = function (e) {
         properties.scale = properties.scale*1 / 1.25;
         draw();
     }
-    // console.log(e);
 }
 
 function draw() {

@@ -1,0 +1,6 @@
+MOUSE: rotating X,Y
+Q/E: rotating Z
+W/S: moving Z
+A/D: moving X
+R/F: moving Y
++/-: scaling

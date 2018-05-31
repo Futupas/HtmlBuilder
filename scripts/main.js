@@ -205,6 +205,17 @@ window.onkeydown = function (e) {
             Elements[0].properties.y = Elements[0].properties.y*1 - 10;
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'Equal') {
+            Elements[0].properties.scale = +(Elements[0].properties.scale*1 * 1.25).toFixed(2);
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        } else if (e.code == 'Minus') {
+            Elements[0].properties.scale = +(Elements[0].properties.scale*1 / 1.25).toFixed(2);
+            document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
+                elementtypes[0].draw(Elements[0]).style.transform;
+        }
+        if (document.querySelectorAll('#solution div.active[data-s-elname="sketch"]').length >= 1) {
+            elementtypes[0].edit(Elements[0]);
         }
     }
     if (mouseinprojectpreview) {
