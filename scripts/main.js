@@ -182,11 +182,11 @@ window.onkeydown = function (e) {
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         } else if (e.code == 'KeyA') {
-            Elements[0].properties.x = Elements[0].properties.x*1 - 10;
+            Elements[0].properties.x = Elements[0].properties.x*1 + 10;
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         } else if (e.code == 'KeyD') {
-            Elements[0].properties.x = Elements[0].properties.x*1 + 10;
+            Elements[0].properties.x = Elements[0].properties.x*1 - 10;
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         } else if (e.code == 'KeyQ') {
@@ -198,11 +198,11 @@ window.onkeydown = function (e) {
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         } else if (e.code == 'KeyR') {
-            Elements[0].properties.y = Elements[0].properties.y*1 - 10;
+            Elements[0].properties.y = Elements[0].properties.y*1 + 10;
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         } else if (e.code == 'KeyF') {
-            Elements[0].properties.y = Elements[0].properties.y*1 + 10;
+            Elements[0].properties.y = Elements[0].properties.y*1 - 10;
             document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
                 elementtypes[0].draw(Elements[0]).style.transform;
         }
