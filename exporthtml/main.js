@@ -50,7 +50,7 @@ window.onkeydown = function (e) {
 }
 
 function draw() {
-    document.getElementById('sketch').style.transform = 
+    document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
         'translateX(' + properties.x +
         'px) translateY(' + properties.y +
         'px) translateZ(' + properties.z +
