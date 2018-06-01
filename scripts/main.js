@@ -163,6 +163,8 @@ document.getElementById('preview').onmousemove = function (e) {
         Elements[0].properties.rotateY = Elements[0].properties.rotateY*1 + e.movementX;
         document.querySelector('#preview div[data-elname="sketch"]').style.transform = 
             elementtypes[0].draw(Elements[0]).style.transform;
+
+        if (document.querySelectorAll('#solution div.active[data-s-elname="sketch"]').length >= 1) elementtypes[0].edit(Elements[0]);
     }
 }
 document.getElementById('projectpreview').onmousemove = function (e) {
